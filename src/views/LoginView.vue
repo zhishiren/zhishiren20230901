@@ -1,12 +1,8 @@
 <template>
     <div class="login">
-      <!-- <img alt="Vue logo" src="../assets/logo.png"> -->
-      <!-- <HelloWorld msg="Welcome to Your Vue.js App"/> -->
-      <div style="width: 1280px;margin: 0 auto;background-color:#708090;;height: 40px;color: white;">
-      你好，xxx，今天是2023年10月11日，你有3条群消息，9条用户聊天信息，点击查看。
-      </div>
+      <HelloLogout></HelloLogout>
     <el-menu  
-        :default-active="activeIndex"  
+        :default-active=activeIndex
         class="el-menu-demo"  
         mode="horizontal"  
         :ellipsis="false"  
@@ -20,116 +16,231 @@
         <el-menu-item index="4" class="menu-item">我的主页</el-menu-item>  
         <el-menu-item index="5" class="menu-item">共享服务</el-menu-item>  
         <el-menu-item index="6" class="menu-item">本站介绍</el-menu-item>  
-        <el-menu-item index="7" class="menu-item">智能搜索</el-menu-item>
-        <el-menu-item index="8" class="menu-item">提问辩论</el-menu-item>
+        <el-menu-item index="7" class="menu-item">安批百科</el-menu-item>  
     </el-menu>  
-
-    <!-- 根据activeIndex的值显示不同的内容 -->  
-    <div v-if="activeIndex === '0'">  
-      <el-container>
-      <el-aside width="120px">
-        <el-menu
-        default-active="01"
-        class="el-menu-vertical-demo"
-        @open="handleOpen"
-        @close="handleClose"
-        >
-       
-        <el-menu-item index="01" class="menu-item18">
-          <span>我要发言</span>
-        </el-menu-item>
-        <el-menu-item index="02" class="menu-item18">
-          <span>用户动态</span>
-        </el-menu-item>
-        <el-menu-item index="03" class="menu-item18">
-          <span>内容动态</span>
-        </el-menu-item>
-        <el-menu-item index="04" class="menu-item18">
-          <span>互动信息</span>
-        </el-menu-item>
-        <el-menu-item index="04" class="menu-item18">
-          <span>系统通知</span>
-        </el-menu-item>
-        <el-menu-item index="04" class="menu-item18">
-          <span>历史动态</span>
-        </el-menu-item>
-      </el-menu>
-
-      </el-aside>
-      <el-main>Main</el-main>
-    </el-container>
-
-      <!-- 新闻动态的内容 -->  
    
-      
+    <el-container>  
+    <el-main style="padding: 0px;" >  
+        <el-row style="width: 960px;"  v-if="activeIndex === '0'">  
+              <el-col :span="3">  
+                  <el-menu
+                  :default-active=activeSubIndex0
+                  class="el-menu-vertical-demo"
+                  @select="subhandleSelect0"  
+                  >
+                    <el-menu-item index="01" class="menu-item18">
+                      <span>我要发布</span>
+                    </el-menu-item>
+                    <el-menu-item index="02" class="menu-item18">
+                      <span>用户动态</span>
+                    </el-menu-item>
+                    <el-menu-item index="03" class="menu-item18">
+                      <span>内容动态</span>
+                    </el-menu-item>
+                    <el-menu-item index="04" class="menu-item18">
+                      <span>互动信息</span>
+                    </el-menu-item>
+                    <el-menu-item index="05" class="menu-item18">
+                      <span>系统通知</span>
+                    </el-menu-item>
+                    <el-menu-item index="06" class="menu-item18">
+                      <span>历史动态</span>
+                    </el-menu-item>
+                  </el-menu>
+              </el-col>  
+              <el-col :span="21"  v-if="activeSubIndex0 === '01'">  
+                  我要发布的内容
+              </el-col>  
+              <el-col :span="21" v-if="activeSubIndex0 === '02'">  
+                  用户动态
+              </el-col>  
+              <el-col :span="21" v-if="activeSubIndex0 === '03'">  
+                内容动态
+              </el-col>  
+              <el-col :span="21" v-if="activeSubIndex0 === '04'">  
+                互动信息
+              </el-col>  
+              <el-col :span="21" v-if="activeSubIndex0 === '05'">  
+                系统通知
+              </el-col>  
+              <el-col :span="21" v-if="activeSubIndex0 === '06'">  
+                历史动态
+              </el-col>  
+        </el-row>  
+
+        <el-row style="width: 960px;"  v-if="activeIndex === '1'">  
+              <el-col :span="3">  
+                  <el-menu
+                  :default-active=activeSubIndex1
+                  class="el-menu-vertical-demo"
+                  @select="subhandleSelect1"  
+                  >
+                    <el-menu-item index="11" class="menu-item18">
+                      <span>公议事项</span>
+                    </el-menu-item>
+                    <el-menu-item index="12" class="menu-item18">
+                      <span>公社架构</span>
+                    </el-menu-item>
+                    <el-menu-item index="13" class="menu-item18">
+                      <span>协会列表</span>
+                    </el-menu-item>
+                    <el-menu-item index="14" class="menu-item18">
+                      <span>公社成员</span>
+                    </el-menu-item>
+                    <el-menu-item index="15" class="menu-item18">
+                      <span>任务列表</span>
+                    </el-menu-item>
+                  </el-menu>
+              </el-col>  
+              <el-col :span="21"  v-if="activeSubIndex1 === '12'">  
+                  这是树状公社机构列表
+              </el-col>  
+              <el-col :span="21" v-if="activeSubIndex1 === '13'">  
+                  这是协会列表
+              </el-col>  
+              <el-col :span="21" v-if="activeSubIndex1 === '11'">  
+                  这是你参加的公社和协会的公共事项
+              </el-col>  
+              <el-col :span="21" v-if="activeSubIndex1 === '14'">  
+                  这是所有的公社成员信息
+              </el-col>  
+              <el-col :span="21" v-if="activeSubIndex1 === '15'">  
+                  这是你的任务列表
+              </el-col>  
+        </el-row>  
+
+
+        <el-row style="width: 960px;"  v-if="activeIndex === '2'">  
+              <el-col :span="3">  
+                  <el-menu
+                  :default-active=activeSubIndex1
+                  class="el-menu-vertical-demo"
+                  @select="subhandleSelect1"  
+                  >
+                    <el-menu-item index="21" class="menu-item18">
+                      <span>公议事项</span>
+                    </el-menu-item>
+                    <el-menu-item index="22" class="menu-item18">
+                      <span>公社架构</span>
+                    </el-menu-item>
+                    <el-menu-item index="23" class="menu-item18">
+                      <span>协会列表</span>
+                    </el-menu-item>
+                    <el-menu-item index="24" class="menu-item18">
+                      <span>公社成员</span>
+                    </el-menu-item>
+                    <el-menu-item index="25" class="menu-item18">
+                      <span>任务列表</span>
+                    </el-menu-item>
+                  </el-menu>
+              </el-col>  
+              <el-col :span="21"  v-if="activeSubIndex1 === '22'">  
+                  这是树状公社机构列表
+              </el-col>  
+              <el-col :span="21" v-if="activeSubIndex1 === '23'">  
+                  这是协会列表
+              </el-col>  
+              <el-col :span="21" v-if="activeSubIndex1 === '21'">  
+                  这是你参加的公社和协会的公共事项
+              </el-col>  
+              <el-col :span="21" v-if="activeSubIndex1 === '24'">  
+                  这是所有的公社成员信息
+              </el-col>  
+              <el-col :span="21" v-if="activeSubIndex1 === '25'">  
+                  这是你的任务列表
+              </el-col>  
+        </el-row>  
+
+        <el-row style="width: 960px;" v-if="activeIndex === '6'">
+            <el-col :span="3">
+              <el-menu
+                :default-active=activeSubIndex6
+                class="el-menu-vertical-demo"
+                @select="subhandleSelect6"
+              >
+                <el-menu-item index="61" class="menu-item18">
+                  <span>公社实况</span>
+                </el-menu-item>
+                <el-menu-item index="62" class="menu-item18">
+                  <span>西撒地区</span>
+                </el-menu-item>
+                <el-menu-item index="63" class="menu-item18">
+                  <span>设计理念</span>
+                </el-menu-item>
+                <el-menu-item index="64" class="menu-item18">
+                  <span>功能介绍</span>
+                </el-menu-item>
+              </el-menu>
+          </el-col>
+          <el-col :span="21" v-if="activeSubIndex6 === '62'">
+            这是树状公社机构列表
+          </el-col>
+          <el-col :span="21" v-if="activeSubIndex6 === '63'">
+            这是协会列表
+          </el-col>
+          <el-col :span="21" v-if="activeSubIndex6 === '61'">
+            这是你参加的公社和协会的公共事项
+          </el-col>
+          <el-col :span="21" v-if="activeSubIndex6 === '64'">
+            这是所有的公社成员信息
+          </el-col>
+      </el-row>
+
+        <el-row style="width: 960px;"  v-if="activeIndex === '7'">  
+              <el-col :span="3">  
+                  <el-menu
+                  :default-active=activeSubIndex7
+                  class="el-menu-vertical-demo"
+                  @select="subhandleSelect7"  
+                  >
+                    <el-menu-item index="71" class="menu-item18">
+                      <span>词条排行</span>
+                    </el-menu-item>
+                    <el-menu-item index="72" class="menu-item18">
+                      <span>恶人榜单</span>
+                    </el-menu-item>
+                    <el-menu-item index="73" class="menu-item18">
+                      <span>旧闻跟踪</span>
+                    </el-menu-item>
+                    <el-menu-item index="74" class="menu-item18">
+                      <span>知识地图</span>
+                    </el-menu-item>
+                  </el-menu>
+              </el-col>  
+              <el-col :span="21"  v-if="activeSubIndex7 === '72'">  
+                
+              </el-col>  
+              <el-col :span="21" v-if="activeSubIndex7 === '73'">  
+                  这是协会列表
+              </el-col>  
+              <el-col :span="21" v-if="activeSubIndex7 === '71'">  
+                  这是你参加的公社和协会的公共事项
+              </el-col>  
+              <el-col :span="21" v-if="activeSubIndex7 === '74'">  
+                  这是所有的公社成员信息
+              </el-col>  
+        </el-row>  
 
 
 
 
-    </div>  
-    <div v-if="activeIndex === '1'">  
-      <!-- 公社大厅的内容 -->  
-      1122222
-    </div>  
-    <div v-if="activeIndex === '2'">  
-      <!-- 朋友圈子的内容 -->  
-      2222222
-    </div>  
-    <div v-if="activeIndex === '3'">  
-      <!-- 共享资料的内容 -->  
-3333333
-    </div>  
-    <div v-if="activeIndex === '4'">  
-      <!-- 我的主页的内容 -->  
-      <el-container>
-      <el-aside width="120px">
-        <el-menu
-        default-active="01"
-        class="el-menu-vertical-demo"
-        @open="handleOpen"
-        @close="handleClose"
-        >
-       
-        <el-menu-item index="41" class="menu-item18">
-          <span>我要发言</span>
-        </el-menu-item>
-        <el-menu-item index="42" class="menu-item18">
-          <span>用户动态</span>
-        </el-menu-item>
-        <el-menu-item index="43" class="menu-item18">
-          <span>内容动态</span>
-        </el-menu-item>
-        <el-menu-item index="44" class="menu-item18">
-          <span>互动信息</span>
-        </el-menu-item>
-        <el-menu-item index="45" class="menu-item18">
-          <span>系统通知</span>
-        </el-menu-item>
-        <el-menu-item index="46" class="menu-item18">
-          <span>我的消息</span>
-        </el-menu-item>
-      </el-menu>
+    </el-main>
 
-      </el-aside>
-      <el-main>Main</el-main>
-    </el-container>
-    </div>  
-    <div v-if="activeIndex === '5'">  
-      <!-- 共享服务的内容 -->  
-      5555555  
-    </div>  
-    <div v-if="activeIndex === '6'">  
-      <!-- 本站介绍的内容 -->  
-      6666666  
-    </div>  
-    <div v-if="activeIndex === '7'">  
-      <!-- 搜索排行的内容 -->  
-      7777777  
-    </div>  
-    <div v-if="activeIndex === '8'">  
-      <!-- 搜索排行的内容 -->  
-     8888
-    </div>  
+
+    <el-aside class="aside-left">  
+            <el-button class="flat-button" @click="handleClick('search')">搜</el-button>  
+            <el-button class="flat-button" @click="handleClick('ask')">问</el-button>  
+            <el-button class="flat-button" @click="handleClick('debate')">辩</el-button>  
+            <el-button class="flat-button" @click="handleClick('donate')">捐</el-button>  
+            <el-button class="flat-button" @click="handleClick('chat')">聊</el-button>  
+            <el-button class="flat-button" @click="handleClick('chat')">AI</el-button>  
+            <el-button class="flat-button" @click="handleClick('chat')">邮</el-button>  
+            <el-button class="flat-button" @click="handleClick('chat')">播</el-button>  
+    </el-aside>  
+</el-container>
+
+
+   
   </div>  
 </template>  
   
@@ -137,32 +248,60 @@
 import { ref } from 'vue'; 
 // import { ElMenu, ElMenuItem } from 'element-plus';  
 // import 'element-plus/lib/theme-chalk/index.css';  
+import HelloLogout from '../components/CommonComp/HelloLogout.vue';
   
 export default {  
-//   components: {  
-//     ElMenu,  
-//     ElMenuItem,  
-//   },  
-// data() {  
-//     return {  
-//       activeIndex: '0', // 默认选中新闻动态  
-//     };  
-//   },  
-//   methods: {  
-//     handleSelect(index) {  
-//       this.activeIndex = index;  
-//     },  
-//   },  
+
+  components: {
+    HelloLogout
+  },
+
+methods: {  
+    handleClick(action) {  
+      console.log(action);  
+      window.open('/' + action, '_blank');
+    },  
+
+
+  }, 
 setup() {  
     const activeIndex = ref('0'); // 默认选中新闻动态  
+    const activeSubIndex0 = ref('01'); 
+    const activeSubIndex1 = ref('11'); 
+    const activeSubIndex6 = ref('61'); 
+    const activeSubIndex7 = ref('71'); 
   
     const handleSelect = (index) => {  
       activeIndex.value = index;  
     };  
   
+    const subhandleSelect0 = (index) => {  
+      activeSubIndex0.value = index;  
+    };   
+
+    const subhandleSelect1 = (index) => {  
+      activeSubIndex1.value = index;  
+    };       
+    
+    const subhandleSelect6 = (index) => {  
+      activeSubIndex6.value = index;  
+    };   
+
+    const subhandleSelect7 = (index) => {  
+      activeSubIndex7.value = index;  
+    };   
+
     return {  
       activeIndex,  
+      activeSubIndex0,
+      activeSubIndex1,
+      activeSubIndex6,
+      activeSubIndex7,
       handleSelect,  
+      subhandleSelect0,
+      subhandleSelect1,
+      subhandleSelect6,
+      subhandleSelect7,
     };  
   },  
 };  
@@ -173,14 +312,49 @@ setup() {
       margin: 0 auto;      
     }
 
+.header{
+  width: 1280px;background-color:#708090;;height: 40px;color: white;
+  font-size:40px;line-height: 40px;text-align: left;padding: 0;
+}
+
+
+
 .menu-item {  
   font-size: 20px;  
+  color: gray !important;
 }  
 .menu-item18 {  
   font-size: 18px;  
+  /* color: gray !important; */
+  text-align: center;
 }  
 .el-menu-vertical-demo {  
   border-right: none !important;  
 }
+.aside-left {  
+  display: flex;  
+  flex-direction: column;  
+  align-items: flex-end;  
+  justify-content: space-between;  
+  width: 120px;
+  height: 400px;
+
+}  
+  
+.flat-button {  
+  margin-bottom: 0px !important;
+  padding: 15px;  
+  height: 56px;  
+  border: none;  
+  border-radius: 4px;  
+  background-color: #fff;  
+  color: #666;  
+  font-size: 25px;  
+  cursor: pointer; 
+}  
+  
+.flat-button:hover {  
+  background-color: #f2f2f2;  
+}  
 </style>
 
